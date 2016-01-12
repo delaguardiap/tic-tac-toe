@@ -1,6 +1,7 @@
 class Board
   # sets the value of the rows and columns the game board will have.
-
+  attr_accessor :board, :columns, :rows
+  
   def set_rows
     puts "How many rows?"
     @rows = gets.chomp.to_i

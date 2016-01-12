@@ -1,5 +1,6 @@
 require_relative 'board'
-
+require_relative 'victory'
+include Victory
 
 class Game
 
@@ -21,7 +22,6 @@ class Game
       player_select
     end
   end
-
   # The computer will play whatever the player won't
   def computer_choice
     if @player_choice == "X"
@@ -44,10 +44,14 @@ class Game
     end
   end
 
+  
+
   # starts a new game
   def new_game
-    board = Board.new
+    @board = Board.new
     player_select
+    check_victory @player_choice
+    check_victory @computer_choice
     play_again
   end
 
