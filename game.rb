@@ -46,7 +46,7 @@ class Game
 
   # starts a new game
   def new_game
-    Board.new
+    board = Board.new
     player_select
     play_again
   end
