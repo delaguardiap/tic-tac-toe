@@ -44,14 +44,28 @@ class Game
     end
   end
 
-  
+  #Turn method that will first call the player_place method and then checks for victory conditions
+  def turn
+    victory = false
+    while victory == false do
+      player_place
+      @board.show_board
+    end
+  end
+
+  def player_place
+    puts "Choose where to play.(insert row number followed by a space and column number)"
+    choice = gets.chomp.split(" ")
+    @board.board[choice[0].to_i][choice[1].to_i] = @player_choice
+  end
+
+
 
   # starts a new game
   def new_game
     @board = Board.new
     player_select
-    check_victory @player_choice
-    check_victory @computer_choice
+    turn
     play_again
   end
 
